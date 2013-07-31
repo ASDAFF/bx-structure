@@ -12,7 +12,7 @@
 	"license": "MIT",
 	"keywords": ["Bitrix"],
 	"require":{
-		"symfony/yaml": "2.3.x-dev",
+		"symfony/yaml": "2.3.*",
 		"ext-mbstring": "*"
 	},
 	"autoload": {
