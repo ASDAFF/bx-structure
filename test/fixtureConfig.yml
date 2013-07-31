@@ -1,0 +1,47 @@
+---
+# = заменить указанным значением
+# + прибавить в конец
+# ++ прибавить в начало
+# - удалить
+keywords: keyword0, keyword-next0
+description: description0
+
+/item:
+    keywords: keywords1
+    title: title1
+    @expected:
+        keywords: [keywords1]
+        description: description0
+        title: title1
+    /sub-item:
+        +title:' - all of titles'
+        description: description1
+    	@expected:
+            title: title1 - all of titles
+            keywords: [keywords1]
+            description: description1
+
+/item-repeat:
+    keywords: keywords1, keywords1
+    @expected:
+        keywords: [keyword0, keyword-next0, keywords1]
+        description: description0
+
+/item-special:
+    +keywords: keyword1
+    -keywords: ' keyword-next0, keyword0 '
+    @expected:
+        keywords: [keyword1]
+        description: description0
+    @stop:
+        -keywords
+        
+    /item-stopped:
+        keywords: this keywords will not appear
+        @expected:
+            keywords: [keyword1]
+            description: description0
+
+/item-string: string0
+
+/item-special-string: +special-string0
