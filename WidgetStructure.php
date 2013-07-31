@@ -22,7 +22,6 @@ class WidgetStructure extends BStructure{
 			if(isset($widget[1]) && is_array($widget[1])){
 				$config = $widget[1];
 			}
-            dump("widget $name: $path", $config);
 			inc_multiple('widgets/'.$path, $config);
 		}
 	}

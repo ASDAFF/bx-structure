@@ -1,5 +1,7 @@
 <?php
 namespace velosipedist\Structure;
+use \CMap;
+
 /**
  * Класс-конфигуратор, обрабатывающий путь в формате /anyval/node2/foobar/
  * И собирающий хеш-конфигурацию в соответствии с этим путем
@@ -351,7 +353,7 @@ class Structure {
 
 	public function loadConfig() {
 		//todo remove dependency
-		$ext = CFileHelper::getExtension($this->configFile);
+		$ext = \CFileHelper::getExtension($this->configFile);
 		switch($ext){
 			case 'php':
 				$this->config = require $this->configFile;

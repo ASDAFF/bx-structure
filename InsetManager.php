@@ -4,7 +4,7 @@ namespace velosipedist\Structure;
 class InsetManager{
 	const FOLDER_NAME = 'insets';
 	public $curDir;
-	/** @var \WidgetStructure $widgetStructure */
+	/** @var WidgetStructure $widgetStructure */
 	public $widgetStructure;
 	function __construct($widgetConfigFile = false) {
 		$curDir = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

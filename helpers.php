@@ -1,4 +1,78 @@
 <?php
+function inc($pathFromWebroot, $params = array()){
+	if(!str::endsWith($pathFromWebroot, '.php')){
+		$pathFromWebroot.= '.php';
+	}
+	$path = dirname(__FILE__).'/'.ltrim($pathFromWebroot, '/');
+	return include_once $path;
+}
+
+function inc_multiple($pathFromWebroot, $params = array()){
+	if(!str::endsWith($pathFromWebroot, '.php')){
+		$pathFromWebroot.= '.php';
+	}
+	$path = dirname(__FILE__).'/'.ltrim($pathFromWebroot, '/');
+	return include $path;
+}
+
+class str{
+	// начинается ли строка с подстроки
+	public static function startsWith($str, $prefix){
+		return strpos($str, $prefix) === 0;
+	}
+
+	// кончается ли строка подстрокой
+	public static function endsWith($str, $postfix){
+		return substr($str, -strlen($postfix)) === $postfix;
+	}
+
+	/**
+	 * To unicode
+	 * @static
+	 * @param $str
+	 * @return string
+	 */
+	public static function u($str){
+		return mb_convert_encoding($str, 'utf-8', 'windows-1251');
+	}
+
+	/**
+	 * To win-1251
+	 * @static
+	 * @param $str
+	 * @return string
+	 */
+	public static function w($str){
+		return mb_convert_encoding($str, 'windows-1251', 'utf-8');
+	}
+
+    public static function translit($str){
+        $str = trim(mb_strtolower($str, 'utf-8'));
+    	$tr = array(
+    		"а"=>"a","б"=>"b",
+    		"в"=>"v","г"=>"g","д"=>"d","е"=>"e","ж"=>"j",
+    		"з"=>"z","и"=>"i","й"=>"y","к"=>"k","л"=>"l",
+    		"м"=>"m","н"=>"n","о"=>"o","п"=>"p","р"=>"r",
+    		"с"=>"s","т"=>"t","у"=>"u","ф"=>"f","х"=>"h",
+    		"ц"=>"ts","ч"=>"ch","ш"=>"sh","щ"=>"sch","ъ"=>"y",
+    		"ы"=>"yi","ь"=>"j","э"=>"e","ю"=>"yu","я"=>"ya",
+    		' '=>'_','№'=>'N','«'=>'','»'=>'',':'=>'','('=>'',')'=>'',
+    		','=>'','.'=>'',';'=>'',
+    	);
+        return strtr($str,$tr);
+    }
+
+	public static function parseCoords($val){
+		return array_map('floatval', array_reverse(explode(',',$val)));
+	}
+
+	public static function parsePhone($phone){
+		preg_match('/(\((\d+)\))?(.+)/',$phone, $parts);
+		return array('code'=>$parts[2],'number'=>trim($parts[3]));
+	}
+}
+
+
 /**
  * CMap implements a collection that takes key-value pairs.
  *
