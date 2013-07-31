@@ -4,7 +4,7 @@ namespace velosipedist\Structure;
  * Класс-конфигуратор, обрабатывающий путь в формате /anyval/node2/foobar/
  * И собирающий хеш-конфигурацию в соответствии с этим путем
  */
-abstract class Structure {
+class Structure {
 	/* @var array $config */
 	protected $config;
 	protected $configFile;
