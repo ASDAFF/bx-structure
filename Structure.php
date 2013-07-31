@@ -1,6 +1,8 @@
 <?php
 namespace velosipedist\Structure;
 use \CMap;
+use Exception;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Класс-конфигуратор, обрабатывающий путь в формате /anyval/node2/foobar/
@@ -360,8 +362,7 @@ class Structure {
 				break;
 			case 'yml':
 			case 'yaml':
-				$yaml = new Spyc();
-				$result = $yaml->loadFile($this->configFile);
+				$result = Yaml::parse($this->configFile);
 				$this->config = is_array($result) ? $result : array();
 				break;
 		}
