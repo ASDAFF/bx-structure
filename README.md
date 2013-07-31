@@ -20,7 +20,7 @@ title-bar: [title]
 	# here's is default site root config
 	sidebar-1: widget-name-without-php-ext
 	# widget can be array
-	sidebar-2: [another-widget, {config-option: foo, anther-option: [1,2,3]]}]
+	sidebar-2: [another-widget, {config-option: foo, anther-option: [1,2,3]}]
 	title-bar: # empty string disables widget slot
 	# now we redefining some widgets placement at /pagename
 	/pagename:
