@@ -15,10 +15,10 @@
 		"symfony/yaml": "2.3.x-dev"
 	},
 	"autoload": {
-		"files": ["src/helpers.php"],
+		"files": ["velosipedist/Structure/helpers.php"],
 		"psr-0": { 
-			"": "src/" ,
-			"velosipedist\\Structure\\": "src/" 
+			"": "velosipedist/Structure" ,
+			"velosipedist\\Structure\\": "" 
 		}
 	}
 }
