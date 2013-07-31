@@ -1,6 +1,5 @@
 <?php
-inc('structure/BStructure');
-
+namespace velosipedist\Structure;
 /**
  * Вывод виджетов в заданных местах согласно конфигу.
  * В отличие от врезок (.insets) - выводят одни и те же участки кода

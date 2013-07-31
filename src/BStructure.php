@@ -1,5 +1,5 @@
 <?php
-inc('structure/Structure');
+namespace velosipedist\Structure;
 
 class BStructure extends Structure{
 	const TTL = 3600;
@@ -7,7 +7,7 @@ class BStructure extends Structure{
 	public function loadConfig() {
 //		return parent::loadConfig();
         //todo fix empty config caching
-        $cache = new CPHPCache();
+        $cache = new \CPHPCache();
 		$cacheFile = $_SERVER['DOCUMENT_ROOT']."/bitrix/cache/".$cache->GetPath(__CLASS__);
 		// проверяем, обновлялся ли конфиг
         $cacheWritten = filemtime($cacheFile);

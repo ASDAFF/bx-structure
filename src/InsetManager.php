@@ -1,5 +1,5 @@
 <?php
-inc('structure/WidgetStructure');
+namespace velosipedist\Structure;
 
 class InsetManager{
 	const FOLDER_NAME = 'insets';
@@ -7,10 +7,11 @@ class InsetManager{
 	/** @var \WidgetStructure $widgetStructure */
 	public $widgetStructure;
 	function __construct($widgetConfigFile = false) {
-		$this->curDir = $_SERVER['DOCUMENT_ROOT'].$GLOBALS['APPLICATION']->GetCurDir();
+		$curDir = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+		$this->curDir = $_SERVER['DOCUMENT_ROOT'].$curDir;
 		if($widgetConfigFile){
 			$this->widgetStructure = new WidgetStructure($widgetConfigFile);
-			$this->widgetStructure->parsePath(trim($GLOBALS['APPLICATION']->GetCurDir(), '/'));
+			$this->widgetStructure->parsePath(trim($curDir, '/'));
 			$this->widgetStructure->flushConfig();
 		}
 	}
@@ -26,7 +27,7 @@ class InsetManager{
 	public function inset($slot = 'index'){
 		// вычисляем, в какой папке мы находмися
 		$curDir = rtrim($this->curDir, '/').'/';
-		$commonDir = $curDir .'.'.self::FOLDER_NAME;
+		$commonDir = $curDir .'.'.static::FOLDER_NAME;
 		if(is_dir($commonDir)){
 			$incl = $commonDir .'/'.$slot.'.php';
 			if(is_file($incl)){
