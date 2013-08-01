@@ -5,7 +5,6 @@ class BStructure extends Structure{
 	const TTL = 3600;
 
 	public function loadConfig() {
-//		return parent::loadConfig();
         //todo fix empty config caching
         $cache = new \CPHPCache();
 		$cacheFile = $_SERVER['DOCUMENT_ROOT']."/bitrix/cache/".$cache->GetPath(__CLASS__);
